@@ -1,0 +1,33 @@
+{
+  "name": "PorximityBuy",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "author": "Bruno Verçosa Martins",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "^1.5.5",
+    "angular-input-masks": "^2.3.0",
+    "angular-route": "^1.5.5",
+    "ansi-font": "0.0.2",
+    "bootstrap": "^3.3.6",
+    "chart.js": "^2.1.3",
+    "chartjs-color": "^2.0.0",
+    "chartjs-color-string": "^0.4.0",
+    "color-convert": "^1.3.1",
+    "color-name": "^1.1.1",
+    "dropzone": "^4.3.0",
+    "echarts": "^3.1.10",
+    "flot": "^0.8.0-alpha",
+    "font-awesome": "^4.6.1",
+    "fullcalendar": "^2.7.2",
+    "jquery": "^2.2.4",
+    "mocha": "^2.4.5",
+    "moment": "^2.13.0",
+    "morris.js": "^0.5.0",
+    "normalize-css": "^2.3.1",
+    "nprogress": "^0.2.0",
+    "string-mask": "^0.3.0",
+    "zrender": "^3.1.0"
+  }
+}
