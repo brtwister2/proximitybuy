@@ -1,0 +1,7 @@
+.link {
+    text-decoration: underline;
+    color: #337ab7;
+}
+table.vcentered>tbody>tr>td{
+    vertical-align: middle;
+}

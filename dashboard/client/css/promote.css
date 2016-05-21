@@ -1,0 +1,7 @@
+#promote-view table input{
+    width: 100px;
+}
+
+#promote-view table td:last-child, #promote-view table th:last-child{
+    text-align: center;
+}

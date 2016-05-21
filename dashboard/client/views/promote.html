@@ -1,0 +1,25 @@
+<div class="row" ng-init="ctrl.init();" id="promote-view">
+
+    <table class="table table-striped vcentered">
+        <thead>
+        <tr>
+            <th>Status</th>
+            <th>Campaign name</th>
+            <th>budget</th>
+            <th>Views</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="campaign in ctrl.campaigns">
+            <td><button ng-click="ctrl.changeStatus(campaing);" class="btn btn-xs"
+                        ng-class="{ 'btn-success': campaign.status, 'btn-danger': !campaign.status }" >
+                {{campaign.status ? 'Actived' : 'Deactived' }}
+            </button></td>
+            <td><a href="#" class="link">{{campaign.name}}</a></td>
+            <td><input class="form-control"  ui-money-mask ng-model="campaign.budget" /> </td>
+            <td><b>{{campaign.views}}</b></td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
