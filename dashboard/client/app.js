@@ -1,4 +1,4 @@
-var app = angular.module('dashboard', ['ngRoute', 'ui.utils.masks']).run()
+var app = angular.module('dashboard', ['ngRoute','ngAnimate', 'ui.utils.masks']).run()
 .config(function ($routeProvider, $locationProvider) {
     $routeProvider
         .when('/home', {
@@ -12,7 +12,8 @@ var app = angular.module('dashboard', ['ngRoute', 'ui.utils.masks']).run()
         .when('/promote', {
             templateUrl: 'views/promote.html',
             controller: "PromoteController as ctrl"
-        }).otherwise('/home');
+        })
+        .otherwise('/home');
 
 });
 

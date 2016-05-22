@@ -1,7 +1,124 @@
-#promote-view table input{
+#promote-view table .currency{
     width: 100px;
+}
+#promote-view table .status{
+    width: 70px;
+}
+#promote-view table .bid{
+    width: 300px;
+}
+#promote-view table td:first-child, #promote-view table th:first-child{
+    text-align: center;
+}
+#promote-view table img {
+    width: 40px;
+    height: 40px;
+    border-radius: 5px;
+    border: 3px solid rgba(0,0,0,0.05);
+    margin-right: 10px;
+    float: left;
+}
+#promote-view .title_left{
+    margin-left: 10px;
+}
+
+#promote-view .panel_right, #promote-view .title_left{
+    padding-top: 10px;
+}
+
+#promote-view .title_left h3{
+    float: left;
+    margin-right: 10px;
+}
+
+#promote-view .panel_header {
+    height: 115px;
+    padding: 65px 10px 18px 12px;
+    background: #686e78;
+    color: #fff;
+}
+
+#promote-view .panel_header .title{
+    font-size: 20pt;
+    font-weight: 300;
+}
+
+#promote-view .panel_header button{
+    float: right;
+}
+.btn-campaign {
+    background: #EA6464;
+    border: 1px solid #D89A9A;
+    color: #fff;
+}
+
+.btn-campaign:active, .btn-campaign:hover, .btn-campaign:focus  {
+    color: #fff;
+}
+
+.btn-close {
+    background: #EAAF64;
+    border: 1px solid #D8C79A;
+    color: #fff;
+}
+
+.btn-close:active, .btn-close:hover, .btn-close:focus  {
+    color: #fff;
 }
 
 #promote-view table td:last-child, #promote-view table th:last-child{
     text-align: center;
+}
+
+#promote-view .form-panel{
+    padding: 0px;
+}
+
+#promote-view .budget-field{
+    max-width: 100px;
+}
+#promote-view .picture-upload .btn-danger{
+    width: 100%;
+    margin: 5px;
+}
+#promote-view .picture-upload .img-upload {
+    width: 100%;
+    border-radius: 8px;
+    margin-left: 5px;
+    display: block;
+    height: 167px;;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+#promote-view .picture-upload .img-upload:hover .img-edit-upload {
+    opacity: 1;
+}
+#promote-view .picture-upload .img-upload input {
+    display: none;
+}
+#promote-view .picture-upload .img-upload .img-edit-upload {
+    width: 100%;
+    height: 167px;
+    line-height: 160px;
+    font-size: 15pt;
+    border-radius: 8px;
+    background: rgba(0,0,0,0.5);
+    color: #FFF;
+    box-sizing: border-box;
+    cursor: pointer;
+    opacity: 0;
+    transition: opacity 200ms 0ms;
+}
+
+
+
+@media (max-width: 768px) {
+    #promote-view .panel_header span {
+        font-size: 15pt;
+    }
+    #promote-view .panel_header button span{
+        display: none;
+    }
+
 }

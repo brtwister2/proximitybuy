@@ -1,7 +1,87 @@
 .link {
-    text-decoration: underline;
     color: #337ab7;
+    cursor: pointer;
 }
 table.vcentered>tbody>tr>td{
     vertical-align: middle;
+}
+
+.animate-enter {
+    -webkit-transition: 1s linear all; /* Chrome */
+    transition: 1s linear all;
+    opacity: 0;
+}
+
+.animate-enter.animate-enter-active {
+    opacity: 1;
+}
+
+
+/* when hiding the picture */
+.ng-hide-add         { animation:0.5s lightSpeedOut ease; }
+
+/* when showing the picture */
+.ng-hide-remove      { animation:0.5s flipInX ease; }
+
+/* ANIMATIONS (FROM ANIMATE.CSS) ======================== */
+/* flip in */
+@keyframes flipInX {
+    0% {
+        transform: perspective(400px) translateY(20%);
+        transition-timing-function: ease-in;
+        opacity: 0;
+    }
+
+    40% {
+        transform: perspective(400px) translateY(10%);
+        transform: perspective(400px);
+        transform: perspective(400px);
+        transition-timing-function: ease-in;
+        transition-timing-function: ease-in;
+    }
+
+    60% {
+        transform: perspective(400px);
+        transform: perspective(400px);
+        transform: perspective(400px);
+        opacity: 1;
+    }
+
+    80% {
+        transform: perspective(400px);
+        transform: perspective(400px);
+        transform: perspective(400px);
+    }
+
+    100% {
+        transform: perspective(400px);
+        transform: perspective(400px);
+        transform: perspective(400px);
+    }
+}
+
+/* light speed out */
+@keyframes lightSpeedOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(100%, 0, 0) ;
+        transform: translate3d(100%, 0, 0) ;
+        opacity: 0;
+    }
+}
+
+@keyframes lightSpeedOut {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        transform: translate3d(100%, 0, 0) ;
+        transform: translate3d(100%, 0, 0) ;
+        transform: translate3d(100%, 0, 0) ;
+        opacity: 0;
+    }
 }

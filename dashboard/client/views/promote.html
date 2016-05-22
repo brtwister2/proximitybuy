@@ -1,22 +1,126 @@
 <div class="row" ng-init="ctrl.init();" id="promote-view">
 
+
+    <div class="panel_header">
+        <span class="title">{{ctrl.isEditing ? (ctrl.currentCampaign.id == null ? 'New Campaign' : 'Editing Campaign #'+ctrl.currentCampaign.id) : 'Promote your products'}}</span>
+        <button  ng-click="ctrl.newCampaign();" class="btn btn-campaign"><i class="fa fa-plus"></i> <span>Add new campaign</span></button>
+        <button  ng-show="ctrl.isEditing && ctrl.currentCampaign.id != null" ng-click="ctrl.removeCampaign(ctrl.currentCampaign, true);" class="btn btn-close"><i class="fa fa-close"></i> <span>Remove</span></button>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 form-panel fadeanim"  ng-show="ctrl.isEditing">
+        <div class="x_panel">
+            <div class="x_content">
+                <br>
+                <form class="form-horizontal form-label-left">
+
+                    <div class="row">
+                        <div class="col-xs-12 col-md-3 col-sm-3 picture-upload" align="center">
+
+                            <div class="img-upload" style="background-image:url('{{ctrl.getCurrentImage(ctrl.currentCampaign)}}');" alt="" >
+                                <div class="img-edit-upload">EDIT</div>
+                                <input type="file" id="imgupload" onchange="angular.element(this).scope().setCampaignImage(this.files);" accept="image/*" ng-model="ctrl.currentImage" />
+                            </div>
+                            <button class="btn btn-danger btn-block" ng-click="ctrl.removeCampaignImage(ctrl.currentCampaign);" >Clear</button>
+                        </div>
+
+                        <div class=" col-md-9 col-sm-9 col-xs-12 col-lg-6 promote-frm">
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Status</label>
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div id="gender" class="btn-group" data-toggle="buttons">
+
+                                            <input type="radio"  name="switch" ng-model="ctrl.currentCampaign.status" value="1" required > &nbsp; On &nbsp;
+
+
+                                            <input type="radio" id="switchOff" name="switch" ng-model="ctrl.currentCampaign.status" value="0" required>  &nbsp; Off &nbsp;
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Campaign Name <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text"  ng-model="ctrl.currentCampaign.name" placeholder="Your campaign name" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3  col-xs-12">Budget<span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentCampaign.budget" placeholder="$ 00.00" ui-money-mask class="form-control budget-field" />
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Beacon ID<span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text"  ng-model="ctrl.currentCampaign.bid" placeholder="668440ca-1fa8-11e6-b6ba-3e1d05defe78" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3  col-xs-12 ">Link</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <div class="input-group">
+                                        <span class="input-group-addon" id="basic-addon3">https://proximitybuy.myshopify.com/products/</span>
+                                        <input type="text" class="form-control"  ng-model="ctrl.currentCampaign.link" placeholder="calvin-klein-jacket" type="text"required />
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3 col-xs-12">Title <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text"  ng-model="ctrl.currentCampaign.title" placeholder="Your title" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-md-3 col-sm-3  col-xs-12 ">Description</label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input class="form-control"  ng-model="ctrl.currentCampaign.description" placeholder="Type your description here" type="text" maxlength="50" required />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                        <div class="form-group">
+                            <div class="pull-right">
+                                <button type="submit" ng-click="ctrl.cancelEditCampaign();" class="btn ">Cancel</button>
+                                <button type="submit" class="btn btn-success" ng-click="ctrl.saveCurrentCampaign(ctrl.currentCampaign);">Save</button>
+                            </div>
+                        </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+
     <table class="table table-striped vcentered">
         <thead>
         <tr>
-            <th>Status</th>
+            <th class="visible-sm visible-sm visible-lg">Status</th>
             <th>Campaign name</th>
-            <th>budget</th>
+            <th class="visible-lg">beacon id</th>
+            <th class="visible-sm visible-md visible-lg">budget</th>
             <th>Views</th>
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="campaign in ctrl.campaigns">
-            <td><button ng-click="ctrl.changeStatus(campaing);" class="btn btn-xs"
-                        ng-class="{ 'btn-success': campaign.status, 'btn-danger': !campaign.status }" >
-                {{campaign.status ? 'Actived' : 'Deactived' }}
-            </button></td>
-            <td><a href="#" class="link">{{campaign.name}}</a></td>
-            <td><input class="form-control"  ui-money-mask ng-model="campaign.budget" /> </td>
+        <tr ng-repeat="campaign in ctrl.campaigns"  ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+            <td class="visible-sm visible-sm visible-lg">
+                <button ng-click="ctrl.changeStatus(campaing);" class="btn status btn-xs"
+                        ng-class="{ 'btn-success': campaign.status == '1', 'btn-danger': campaign.status == '0' }">
+                    {{campaign.status == "1" ? 'Actived' : 'Deactived' }}
+                </button>
+            </td>
+            <td><img ng-src="{{ctrl.getCurrentImage(campaign)}}" alt=""/> <span ng-click="ctrl.editCampaign(campaign);" class="link">{{campaign.name}}</span></td>
+            <td class="visible-lg">{{campaign.bid}}</td>
+            <td class="visible-sm visible-md visible-lg">{{campaign.budget | currency}}</td>
             <td><b>{{campaign.views}}</b></td>
         </tr>
         </tbody>
