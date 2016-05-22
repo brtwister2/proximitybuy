@@ -1,15 +1,15 @@
 
 <?php
+
+function crawStore($mode,$appid){
     $src = '';
-    $mode = 'android';
-    if($mode == 'android'){
+    if($mode == 1){
         $dom = new DOMDocument('1.0');
         $classname = "cover-image";
 
         $storeurl = "https://play.google.com/store/apps";
-        $package = "br.brunovercosa.metrobh";
-
-        @$dom->loadHTMLFile($storeurl."/details?id=".$package);
+       
+        @$dom->loadHTMLFile($storeurl."/details?id=".$appid);
         $nodes = array();
         $nodes = $dom->getElementsByTagName("img");
         foreach ($nodes as $element) {
@@ -19,14 +19,13 @@
                 break;
            }
         }
-    }else if($mode == 'ios'){
-        $appid = '1049170431';
+    }else if($mode == 2){
+
         $url = 'http://itunes.apple.com/lookup?id=' . $appid;
         $json = file_get_contents($url);
         $obj = json_decode($json);
         $src = $obj->results[0]->artworkUrl512;
     }
 
-    echo "<img src='$src' />";
-
-?>
+    return $src;
+}

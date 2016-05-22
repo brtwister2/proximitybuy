@@ -18,25 +18,24 @@ ini_set('display_errors', 1);
 
 $contentType = 'application/json; charset: utf-8';
 
-class Service {
-	public $VERSION_CODE = "0.0.1a";
 
-	function hello(){
-		return array("title" => "Hello", 'msg' => "You are welcome!", 'version' => $this->VERSION_CODE);
-	}
+$app->get('/appcampaign/{trackid}/{bid}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'ApplicationCampaign.php';
 
-}
+	$route = $request->getAttribute('route');
+    $bid = $route->getArgument('bid');
+
+	$service = new ApplicationCampaign();
+	$campaigns = $service->getCampaignForBeaconId($bid);
 
 
+	$result = json_encode(array("campanha"=>$campaigns));
 
-
-$app->get('/hello', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
-	$service = new Service();
-    return $response->withHeader('Content-type', $contentType)->write(json_encode($service->hello()));
+    return $response->withHeader('Content-type', $contentType)->write($result);
 });
 
 $app->get('/application', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
-	require 'application.php';
+	require 'Application.php';
 	$service = new Application();
 	$campaigns = $service->getAll();
 
