@@ -13,6 +13,7 @@
 		6B01809C1CF109F900E6ADB3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6B01809B1CF109F900E6ADB3 /* Assets.xcassets */; };
 		6B01809F1CF109F900E6ADB3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6B01809D1CF109F900E6ADB3 /* LaunchScreen.storyboard */; };
 		6B0180A71CF10A5700E6ADB3 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6B0180A61CF10A5700E6ADB3 /* CoreLocation.framework */; };
+		6B0180A91CF2216700E6ADB3 /* ProximityBuy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6B0180A81CF2216700E6ADB3 /* ProximityBuy.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		6B01809E1CF109F900E6ADB3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6B0180A01CF109F900E6ADB3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6B0180A61CF10A5700E6ADB3 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		6B0180A81CF2216700E6ADB3 /* ProximityBuy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProximityBuy.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				6B01809B1CF109F900E6ADB3 /* Assets.xcassets */,
 				6B01809D1CF109F900E6ADB3 /* LaunchScreen.storyboard */,
 				6B0180A01CF109F900E6ADB3 /* Info.plist */,
+				6B0180A81CF2216700E6ADB3 /* ProximityBuy.swift */,
 			);
 			path = BeaconSDK;
 			sourceTree = "<group>";
@@ -144,6 +147,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6B0180A91CF2216700E6ADB3 /* ProximityBuy.swift in Sources */,
 				6B0180971CF109F900E6ADB3 /* ViewController.swift in Sources */,
 				6B0180951CF109F900E6ADB3 /* AppDelegate.swift in Sources */,
 			);
@@ -297,6 +301,7 @@
 				6B0180A51CF109F900E6ADB3 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

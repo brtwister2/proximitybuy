@@ -43,10 +43,20 @@ class BaseModel{
     	foreach ($data as $key => $value) {
 			if ($fields != "") $fields .= ",";
 
-			if (!is_numeric($value)) {
+			if ($key == "img") {
+				$upload = new Upload();
+				$nome = $upload->uploadImage($value);
+				if ($nome !== false) {
+					$value = $nome;	
+				}
 				$fields .= "$key = '$value'";
 			}else{
-				$fields .= "$key = $value";
+
+				if (!is_numeric($value)) {
+					$fields .= "$key = '$value'";
+				}else{
+					$fields .= "$key = $value";
+				}
 			}
 		}
  
