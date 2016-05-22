@@ -2,11 +2,11 @@
 
 
     <div class="panel_header">
-        <span class="title">{{ctrl.isEditing ? (ctrl.currentCampaign.id == null ? 'New monetize' : 'Editing Monetization #'+ctrl.currentCampaign.id) : 'Monetize with your apps'}}</span>
-        <button ng-click="ctrl.newCampaign();" class="btn btn-campaign"><i class="fa fa-plus"></i> <span>Monetize new app</span>
+        <span class="title">{{ctrl.isEditing ? (ctrl.currentMonetize.id == null ? 'New monetize' : 'Editing Monetization #'+ctrl.currentMonetize.id) : 'Monetize with your apps'}}</span>
+        <button ng-click="ctrl.newMonetize();" class="btn btn-campaign"><i class="fa fa-plus"></i> <span>Monetize new app</span>
         </button>
-        <button ng-show="ctrl.isEditing && ctrl.currentCampaign.id != null"
-                ng-click="ctrl.removeCampaign(ctrl.currentCampaign, true);" class="btn btn-close"><i
+        <button ng-show="ctrl.isEditing && ctrl.currentMonetize.id != null"
+                ng-click="ctrl.removeMonetize(ctrl.currentMonetize, true);" class="btn btn-close"><i
                 class="fa fa-close"></i> <span>Remove</span></button>
     </div>
 
@@ -23,12 +23,12 @@
                                 <div class="col-md-6 col-sm-6 col-xs-12">
                                     <div id="gender" class="btn-group" data-toggle="buttons">
 
-                                        <input type="radio" name="switch" ng-model="ctrl.currentCampaign.status"
+                                        <input type="radio" name="switch" ng-model="ctrl.currentMonetize.status"
                                                value="1" required> &nbsp; On &nbsp;
 
 
                                         <input type="radio" id="switchOff" name="switch"
-                                               ng-model="ctrl.currentCampaign.status" value="0" required> &nbsp; Off
+                                               ng-model="ctrl.currentMonetize.status" value="0" required> &nbsp; Off
                                         &nbsp;
 
                                     </div>
@@ -39,7 +39,7 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" ng-model="ctrl.currentCampaign.appid"
+                                    <input type="text" ng-model="ctrl.currentMonetize.appid"
                                            placeholder="19021932193 or com.app.myapp" class="form-control" required/>
                                 </div>
                             </div>
@@ -48,7 +48,7 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <select class="form-control" ng-model="ctrl.currentCampaign.platform">
+                                    <select class="form-control" ng-model="ctrl.currentMonetize.platform">
                                         <option value="1">Android</option>
                                         <option value="2">IOS</option>
                                     </select>
@@ -59,7 +59,7 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-3 col-sm-3 col-xs-12">
-                                    <select class="form-control" ng-model="ctrl.currentCampaign.category">
+                                    <select class="form-control" ng-model="ctrl.currentMonetize.category">
                                         <option value="1">Apps</option>
                                         <option value="2">Games</option>
                                     </select>
@@ -70,9 +70,9 @@
                     <hr/>
                     <div class="form-group">
                         <div class="pull-right">
-                            <button type="submit" ng-click="ctrl.cancelEditCampaign();" class="btn ">Cancel</button>
+                            <button type="submit" ng-click="ctrl.cancelEditMonetize();" class="btn ">Cancel</button>
                             <button type="submit" class="btn btn-success"
-                                    ng-click="ctrl.saveCurrentCampaign(ctrl.currentCampaign);">Save
+                                    ng-click="ctrl.savecurrentMonetize(ctrl.currentMonetize);">Save
                             </button>
                         </div>
                     </div>
@@ -93,19 +93,19 @@
         </tr>
         </thead>
         <tbody>
-        <tr ng-repeat="campaign in ctrl.campaigns" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+        <tr ng-repeat="monetize in ctrl.monetizes" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
             <td class="visible-sm visible-sm visible-lg">
-                <button ng-click="ctrl.changeStatus(campaing);" class="btn status btn-xs"
-                        ng-class="{ 'btn-success': campaign.status == '1', 'btn-danger': campaign.status == '0' }">
-                    {{campaign.status == "1" ? 'Actived' : 'Deactived' }}
+                <button ng-click="ctrl.changeStatus(monetize);" class="btn status btn-xs"
+                        ng-class="{ 'btn-success': monetize.status == '1', 'btn-danger': monetize.status == '0' }">
+                    {{monetize.status == "1" ? 'Actived' : 'Deactived' }}
                 </button>
             </td>
-            <td><img ng-src="{{ctrl.getCurrentImage(campaign)}}" alt=""/>
-                <span ng-click="ctrl.editCampaign(campaign);"
-                      class="link">{{campaign.appid}}</span>
+            <td><img ng-src="{{ctrl.getCurrentIcon(monetize)}}" alt=""/>
+                <span ng-click="ctrl.editMonetize(monetize);"
+                      class="link">{{monetize.appid}}</span>
             </td>
-            <td>{{campaign.trackid}}</td>
-            <td class="visible-sm visible-md visible-lg">Android</td>
+            <td>{{monetize.trackid}}</td>
+            <td class="visible-sm visible-md visible-lg">{{monetize.platform == "1" ? 'Android' : 'IOS'}}</td>
         </tr>
         </tbody>
     </table>
