@@ -1,5 +1,8 @@
 <?php
 
+require_once("BaseModel.php");
+require_once("Upload.php");
+
 class BaseModel{
 
 	var $entity;
@@ -32,11 +35,22 @@ class BaseModel{
 	    return null;
 	}
 
-	function updateWithId($id,$campaign){
+	function updateWithId($id,$data){
 		$db = connect_db();
-    	$campaign = json_decode($campaign);
+    	$data = json_decode($data);
+
+    	$fields = "";
+    	foreach ($data as $key => $value) {
+			if ($fields != "") $fields .= ",";
+
+			if (!is_numeric($value)) {
+				$fields .= "$key = '$value'";
+			}else{
+				$fields .= "$key = $value";
+			}
+		}
  
-		$sql = "update campaign set name = '$campaign->name', title = '$campaign->title', img = '$campaign->img', link = '$campaign->link', bid ='$campaign->bid',description = '$campaign->description',budget = $campaign->budget  where id = $id";
+		$sql = "update $this->entity set $fields where id = $id";
 	    $r = $db->query($sql);
 
 	    if ($r === false) {	   
@@ -60,16 +74,28 @@ class BaseModel{
 				$values .= ",";
 			}
 
-			if (!is_numeric($value)) {
-				$values .="'$value'";
-			}else{
-				$values .= $value;
-			}
+			if ($key == "img") {
+				$upload = new Upload();
+				$nome = $upload->uploadImage($value);
+				if ($nome !== false) {
+					$value = $nome;	
 
-			$fields .= "$key";
+					$values .="'$value'";
+					$fields .= "$key";
+				}
+			}else{
+
+				if (!is_numeric($value)) {
+					$values .="'$value'";
+				}else{
+					$values .= $value;
+				}
+
+				$fields .= "$key";
+			}
 		}
 
-		$sql = "INSERT INTO campaign ($fields) VALUES($values)";
+		$sql = "INSERT INTO $this->entity ($fields) VALUES($values)";
 	   	$r = $db->query($sql);
 
 	    if ($r !== false) {
