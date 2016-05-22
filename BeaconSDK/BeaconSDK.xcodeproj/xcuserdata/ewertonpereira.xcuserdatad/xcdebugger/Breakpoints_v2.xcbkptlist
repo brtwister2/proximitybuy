@@ -10,11 +10,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "BeaconSDK/ProximityBuy.swift"
-            timestampString = "485641496.532586"
+            timestampString = "485642930.404754"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "109"
-            endingLineNumber = "109"
+            startingLineNumber = "103"
+            endingLineNumber = "103"
             landmarkName = "loadFromApi(_:bid:)"
             landmarkType = "5">
          </BreakpointContent>

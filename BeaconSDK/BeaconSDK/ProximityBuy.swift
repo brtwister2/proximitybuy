@@ -149,6 +149,9 @@ class ProximityBuy:NSObject, CLLocationManagerDelegate {
     func openAction (sender:UIButton) {
         let url = campaign!["link"] as! String
         UIApplication.sharedApplication().openURL(NSURL(string: url)!)
+        
+        self.campaignView?.removeFromSuperview()
+        beaconRequested = false
     }
     
     
