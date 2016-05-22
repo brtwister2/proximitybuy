@@ -16,22 +16,6 @@ $app = new \Slim\App;
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 
-/*
-require 'Slim/Slim.php';
-
-\Slim\Slim::registerAutoloader();
-
-
-$app = new \Slim\Slim(array(
-    'mode' => 'production',
-    'debug' => true,
-    'log.enabled' => true,
-    'log.level' => \Slim\Log::DEBUG,
-    'log.writer' => new Slim\LogWriter(fopen('log/log.txt', 'a'))
-        ));
-
-*/
-
 $contentType = 'application/json; charset: utf-8';
 
 class Service {
