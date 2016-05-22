@@ -39,7 +39,7 @@ $app->get('/hello', function (ServerRequestInterface $request, ResponseInterface
 $app->get('/campaign', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
 	require 'Campaign.php';
 	$service = new Campaign();
-	$campaigns = $service->getAllCampaigns();
+	$campaigns = $service->getAll();
 
 
 	$result = json_encode(array("campaigns"=>$campaigns));
@@ -53,7 +53,7 @@ $app->get('/campaign/{id}', function (ServerRequestInterface $request, ResponseI
     $campaignId = $route->getArgument('id');
 
 	$service = new Campaign();
-	$campaigns = $service->getCampaignWithId($campaignId);
+	$campaigns = $service->getWithId($campaignId);
 
 	$result = json_encode(array("campaign"=>$campaigns));
 
@@ -67,7 +67,7 @@ $app->put('/campaign/{id}', function (ServerRequestInterface $request, ResponseI
     $campaignId = $route->getArgument('id');
 
 	$service = new Campaign();
-	$campaigns = $service->updateCampaignWithId($campaignId,$request->getBody());
+	$campaigns = $service->updateWithId($campaignId,$request->getBody());
 
 	$result = json_encode(array("campaign"=>$campaigns));
 
@@ -92,7 +92,7 @@ $app->delete('/campaign/{id}', function (ServerRequestInterface $request, Respon
     $campaignId = $route->getArgument('id');
 
 	$service = new Campaign();
-	$campaigns = $service->deleteCampaign($campaignId);
+	$campaigns = $service->delete($campaignId);
 
 	$result = json_encode(array("campaign"=>"ok"));
 

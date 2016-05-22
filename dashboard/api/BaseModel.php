@@ -1,11 +1,35 @@
 <?php
-require_once("BaseModel.php");
 
-class Campaign extends BaseModel {
+class BaseModel{
 
-	function __construct() {
-   		$this->entity = "campaign";    
-   	}
+	var $entity;
+
+	function getAll(){
+		$db = connect_db();
+    
+		$sql = "select * from $this->entity";
+	    $r = $db->query($sql);
+	    $results = array();
+	    if ($r !== false) {
+	        while ($row = $r->fetch_assoc()) {
+	          	$results[] = $row; 	
+	        }
+	    }
+
+	    return $results;
+	}
+
+	function getWithId($id){
+		$db = connect_db();
+    
+		$sql = "select * from $this->entity where id = $id";
+	    $r = $db->query($sql);
+	    if ($r !== false) {
+	       	return $r->fetch_assoc();
+	    }
+
+	    return null;
+	}
 
 	function updateWithId($id,$campaign){
 		$db = connect_db();
@@ -49,4 +73,6 @@ class Campaign extends BaseModel {
 
 	    return null;
 	}
+
+
 }
