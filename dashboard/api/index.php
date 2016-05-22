@@ -138,6 +138,9 @@ function connect_db() {
 	$pass = 'root';
 	$database = 'proximitybuy';
 
+	//$user = 'pbuy';
+	//$pass = 'w5aruX8PcG7HY2Tf';
+
     $connection = new mysqli($server, $user, $pass, $database);
 
     return $connection;
