@@ -3,6 +3,7 @@
 class BaseModel{
 
 	var $entity;
+	var $result = array("status"=> true, "msg"=> "ok");
 
 	function getAll(){
 		$db = connect_db();
@@ -35,36 +36,53 @@ class BaseModel{
 		$db = connect_db();
     	$campaign = json_decode($campaign);
  
-
-		$sql = "update campaign set name = '$campaign->name', title = '$campaign->title', img = '$campaign->img', link = '$campaign->link', big ='$campaign->bid',description = '$campaign->description',budget = $campaign->budget  where id = $id";
+		$sql = "update campaign set name = '$campaign->name', title = '$campaign->title', img = '$campaign->img', link = '$campaign->link', bid ='$campaign->bid',description = '$campaign->description',budget = $campaign->budget  where id = $id";
 	    $r = $db->query($sql);
-	    if ($r !== false) {
-	       	return $r->fetch_assoc();
+
+	    if ($r === false) {	   
+	    	$this->result["status"] = false;
+	    	$this->result["msg"] = $db->error;
 	    }
 
-	    return null;
+	    return $this->result;
 	}
 
-	function add($campaign){
+	function add($data){
 		$db = connect_db();
 
-		$campaign = json_decode($campaign);
-    	
-		$sql = "INSERT INTO campaign (link,img, name,title,bid,description,budget) VALUES( '$campaign->link', '$campaign->img', '$campaign->name', '$campaign->title', '$campaign->bid', '$campaign->description', $campaign->budget)";
-	    $r = $db->query($sql);
+		$data = json_decode($data);
 
-	    //die($sql);
+		$values = "";
+		$fields = "";
+		foreach ($data as $key => $value) {
+			if ($fields != "") {
+				$fields .= ",";
+				$values .= ",";
+			}
+
+			if (!is_numeric($value)) {
+				$values .="'$value'";
+			}else{
+				$values .= $value;
+			}
+
+			$fields .= "$key";
+		}
+
+		$sql = "INSERT INTO campaign ($fields) VALUES($values)";
+	   	$r = $db->query($sql);
+
 	    if ($r !== false) {
 	       	return true;
 	    }
 
-	    return null;
+	    return $db->error;
 	}
 
 	function delete($id){
 		$db = connect_db();
 
-		$sql = "delete from campaign where id = $id";
+		$sql = "delete from $this->entity where id = $id";
 	    $r = $db->query($sql);
 
 	    if ($r !== false) {
