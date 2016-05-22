@@ -79,10 +79,10 @@ class BaseModel{
 				$nome = $upload->uploadImage($value);
 				if ($nome !== false) {
 					$value = $nome;	
-
-					$values .="'$value'";
-					$fields .= "$key";
 				}
+
+				$values .="'$value'";
+				$fields .= "$key";
 			}else{
 
 				if (!is_numeric($value)) {
