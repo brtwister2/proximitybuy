@@ -43,65 +43,6 @@ class Service {
 
 }
 
-class Campaign {
-	function getAllCampaigns(){
-		$db = connect_db();
-    
-		$sql = "select * from campaign";
-	    $r = $db->query($sql);
-	    $campaigns = array();
-	    if ($r !== false) {
-	        while ($row = $r->fetch_assoc()) {
-	          	$campaigns[] = $row;
-	          	
-	        }
-	    }
-
-	    return $campaigns;
-	}
-
-	function getCampaignWithId($id){
-		$db = connect_db();
-    
-		$sql = "select * from campaign where id = $id";
-	    $r = $db->query($sql);
-	    if ($r !== false) {
-	       	return $r->fetch_assoc();
-	    }
-
-	    return null;
-	}
-
-	function updateCampaignWithId($id,$campaign){
-		$db = connect_db();
-    	$campaign = json_decode($campaign);
- 
-
-		$sql = "update campaign set name = '$campaign->name', title = '$campaign->title', img = '$campaign->img', link = '$campaign->link', big ='$campaign->bid',budget = $campaign->budget  where id = $id";
-	    $r = $db->query($sql);
-	    if ($r !== false) {
-	       	return $r->fetch_assoc();
-	    }
-
-	    return null;
-	}
-
-	function addCampaign($campaign){
-		$db = connect_db();
-
-		$campaign = json_decode($campaign);
-    	
-		$sql = "INSERT INTO campaign (link,img, name,title,bid,budget) VALUES( '$campaign->link', '$campaign->img', '$campaign->name', '$campaign->title', '$campaign->bid', $campaign->budget)";
-	    $r = $db->query($sql);
-
-	    //die($sql);
-	    if ($r !== false) {
-	       	return true;
-	    }
-
-	    return null;
-	}
-}
 
 
 
@@ -112,6 +53,7 @@ $app->get('/hello', function (ServerRequestInterface $request, ResponseInterface
 
 
 $app->get('/campaign', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Campaign.php';
 	$service = new Campaign();
 	$campaigns = $service->getAllCampaigns();
 
@@ -122,7 +64,7 @@ $app->get('/campaign', function (ServerRequestInterface $request, ResponseInterf
 });
 
 $app->get('/campaign/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
-	
+	require 'Campaign.php';
 	$route = $request->getAttribute('route');
     $campaignId = $route->getArgument('id');
 
@@ -136,6 +78,7 @@ $app->get('/campaign/{id}', function (ServerRequestInterface $request, ResponseI
 
 
 $app->put('/campaign/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Campaign.php';
 	$route = $request->getAttribute('route');
     $campaignId = $route->getArgument('id');
 
@@ -148,6 +91,8 @@ $app->put('/campaign/{id}', function (ServerRequestInterface $request, ResponseI
 });
 
 $app->post('/campaign', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Campaign.php';
+	
 	$service = new Campaign();
 	$campaigns = $service->addCampaign($request->getBody());
 
@@ -156,6 +101,19 @@ $app->post('/campaign', function (ServerRequestInterface $request, ResponseInter
     return $response->withHeader('Content-type', $contentType)->write($result);
 });
 
+
+$app->delete('/campaign/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Campaign.php';
+	$route = $request->getAttribute('route');
+    $campaignId = $route->getArgument('id');
+
+	$service = new Campaign();
+	$campaigns = $service->deleteCampaign($campaignId);
+
+	$result = json_encode(array("campaign"=>"ok"));
+
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
 
 
 
