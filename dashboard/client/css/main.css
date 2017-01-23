@@ -85,3 +85,15 @@ table.vcentered>tbody>tr>td{
         opacity: 0;
     }
 }
+
+
+
+@media (max-width: 768px) {
+    .nav_title img {
+        width: 41px;
+        margin: -18px!important;
+    }
+
+}
+
+    
