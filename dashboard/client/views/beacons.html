@@ -1,0 +1,92 @@
+<div class="row" ng-init="ctrl.init();" id="promote-view">
+
+
+    <div class="panel_header">
+        <span class="title">{{ctrl.isEditing ? (ctrl.currentBeacon.id == null ? 'New beacon' : 'Editing beacon #'+ctrl.currentBeacon.id) : 'Setup your beacons'}}</span>
+        <button ng-click="ctrl.newBeacon();" class="btn btn-campaign"><i class="fa fa-plus"></i> <span>Beacon new app</span>
+        </button>
+        <button ng-show="ctrl.isEditing && ctrl.currentBeacon.id != null"
+                ng-click="ctrl.removeBeacon(ctrl.currentBeacon, true);" class="btn btn-close"><i
+                class="fa fa-close"></i> <span>Remove</span></button>
+    </div>
+
+    <div class="col-md-12 col-sm-12 col-xs-12 form-panel fadeanim" ng-show="ctrl.isEditing">
+        <div class="x_panel">
+            <div class="x_content">
+                <br>
+                <form class="form-horizontal form-label-left">
+
+                    <div class="row">
+                        <div class=" col-md-12 col-sm-12 col-xs-12 col-lg-12 promote-frm">
+                            <div class="form-group">
+                                <label class="control-label  col-sm-3">BID <span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.bid"
+                                           placeholder="668440ca-1fa8-11e6-b6ba-3e1d05defe78" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Description<span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.description"
+                                           placeholder="Type a description here" class="form-control" required/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Latitude
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.lat"
+                                           placeholder="-90.3289" class="form-control"/>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Longitude
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.lng"
+                                           placeholder="-49.3827" class="form-control"/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="form-group">
+                        <div class="pull-right">
+                            <button type="submit" ng-click="ctrl.cancelEditBeacon();" class="btn ">Cancel</button>
+                            <button type="submit" class="btn btn-success"
+                                    ng-click="ctrl.savecurrentBeacon(ctrl.currentBeacon);">Save
+                            </button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+    <table class="table table-striped vcentered">
+        <thead>
+        <tr>
+            <th>Bid</th>
+            <th>Description</th>
+            <th>Latitude</th>
+            <th>Longitude</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="beacon in ctrl.beacons" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
+            <td><span ng-click="ctrl.editBeacon(beacon);" class="link">{{beacon.bid}}</span></td>
+            <td>{{beacon.description}}</td>
+            <td>{{beacon.lat}}</td>
+            <td>{{beacon.lng}}</td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>

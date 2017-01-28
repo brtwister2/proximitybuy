@@ -6,6 +6,7 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
 
     self.currentCampaign = {};
     self.campaigns = [];
+    self.beacons = [];
     self.isEditing = false;
 
     self.changeStatus = function(){
@@ -35,7 +36,12 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
 
     }
 
+    self.isNoEndDate = function(campaign){
+      return (!campaign.enddate || campaign.enddate == null || campaign.enddate == "0000-00-00 00:00:00");
+    };
+
     self.editCampaign = function(campaign){
+
         self.isEditing = true;
         self.currentCampaign = campaign;
     };
@@ -82,7 +88,7 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
     self.saveCurrentCampaign = function(campaign){
 
         if(isValid(campaign.name)  && isValid(campaign.description) &&
-            isValid(campaign.status) && isValid(campaign.bid) ) {
+            isValid(campaign.status) && isValid(campaign.beaconid) ) {
             if(!campaign.id) {
                 if(campaign.img != null && campaign.img != '') {
                     campaign.img = campaign.img.substr(campaign.img.indexOf('base64,') + 7, campaign.img.length - 1);
@@ -121,6 +127,19 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
         }
     };
 
+    self.requestBeacon = function () {
+        $http.get(BEACON_URL)
+            .then(function(response){
+                self.beacons = response.data.objects;
+                NProgress.done();
+            })
+            .catch(function(){
+                if(confirm("An unexpected erro happened. Try Again?")){
+                    self.requestBeacon();
+                }
+            });
+    };
+
     self.requestCampaign = function () {
         $http.get(CAMPAIGN_URL)
             .then(function(response){
@@ -138,6 +157,7 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
         Service.setView('promote');
         NProgress.start();
         self.requestCampaign();
+        self.requestBeacon();
         document.getElementsByClassName('img-upload')[0]
             .addEventListener('click', function(){
                 document.getElementById('imgupload').click();

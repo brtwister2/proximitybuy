@@ -16,6 +16,24 @@ table.vcentered>tbody>tr>td{
     opacity: 1;
 }
 
+.form-control {
+    padding: 6px 5px;
+    font-size: 13px;
+}
+
+.nav_title {
+    border: 0;
+    text-align: center;
+}
+.nav_title img {
+    width: 100%;
+    margin: 20px auto;
+    max-width: 50px;
+}
+
+.noenddate {
+    padding-top: 8px;
+}
 
 /* when hiding the picture */
 .ng-hide-add         { animation:0.5s lightSpeedOut ease; }
@@ -91,7 +109,6 @@ table.vcentered>tbody>tr>td{
 @media (max-width: 768px) {
     .nav_title img {
         width: 41px;
-        margin: -18px!important;
     }
 
 }

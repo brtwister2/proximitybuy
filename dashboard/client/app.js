@@ -1,3 +1,8 @@
+//Sorry about that
+if(localStorage.getItem("loggedin") !== 'true'){
+    location.href = 'login.html';
+}
+
 var app = angular.module('dashboard', ['ngRoute','ngAnimate', 'ui.utils.masks']).run()
 .config(function ($routeProvider, $locationProvider) {
     $routeProvider
@@ -12,6 +17,10 @@ var app = angular.module('dashboard', ['ngRoute','ngAnimate', 'ui.utils.masks'])
         .when('/promote', {
             templateUrl: 'views/promote.html',
             controller: "PromoteController as ctrl"
+        })
+        .when('/beacon', {
+            templateUrl: 'views/beacons.html',
+            controller: "BeaconsController as ctrl"
         })
         .otherwise('/home');
 

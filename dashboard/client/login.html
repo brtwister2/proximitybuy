@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="login">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Proximity Dash</title>
+
+    <link href="node_modules/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/maps/jquery-jvectormap-2.0.3.css" rel="stylesheet"/>
+    <link href="css/custom.css" rel="stylesheet">
+    <link href="css/main.css" rel="stylesheet">
+    <link href="css/login.css" rel="stylesheet">
+
+  </head>
+
+  <body class="nav-md" ng-controller="LoginController as ctrl">
+
+
+  <div class="loginmodal-container">
+      <h1>Login to Your Account</h1><br>
+      <form>
+          <input type="text" name="user" ng-model="login" placeholder="Username">
+          <input type="password" name="pass" ng-model="password" placeholder="Password">
+          <input type="submit" name="login" ng-click="requestLogin()" class="login loginmodal-submit" value="Login">
+      </form>
+
+      <div class="login-help">
+          <a href="#">Forgot Password</a>
+      </div>
+  </div>
+
+
+    <script src="node_modules/angular/angular.min.js"></script>
+    <script src="node_modules/angular-input-masks/releases/angular-input-masks-dependencies.js"></script>
+    <script src="node_modules/angular-input-masks//releases/angular-input-masks.js"></script>
+    <script src="node_modules/angular-route/angular-route.min.js"></script>
+    <script src="node_modules/angular-animate/angular-animate.min.js"></script>
+
+    <script src="node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="node_modules/nprogress/nprogress.js"></script>
+    <script src="node_modules/Chart.js/dist/Chart.min.js"></script>
+    <script src="node_modules/Flot/jquery.flot.js"></script>
+    <script src="node_modules//Flot/jquery.flot.pie.js"></script>
+    <script src="node_modules/Flot/jquery.flot.time.js"></script>
+    <script src="node_modules/Flot/jquery.flot.stack.js"></script>
+    <script src="node_modules/Flot/jquery.flot.resize.js"></script>
+
+    <script src="strings.js"></script>
+    <script src="controllers/LoginController.js"></script>
+
+  </body>
+</html>

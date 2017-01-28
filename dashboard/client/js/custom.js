@@ -14,22 +14,23 @@ var CURRENT_URL = window.location.href.split('?')[0],
     $NAV_MENU = $('.nav_menu'),
     $FOOTER = $('footer');
 
+
+var setContentHeight = function () {
+    // reset height
+    $RIGHT_COL.css('min-height', $(window).height());
+
+    var bodyHeight = $BODY.height(),
+        leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
+        contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
+
+    // normalize content
+    contentHeight -= $NAV_MENU.height() + $FOOTER.height();
+
+    $RIGHT_COL.css('min-height', contentHeight);
+};
+
 // Sidebar
 $(document).ready(function() {
-    // TODO: This is some kind of easy fix, maybe we can improve this
-    var setContentHeight = function () {
-        // reset height
-        $RIGHT_COL.css('min-height', $(window).height());
-
-        var bodyHeight = $BODY.height(),
-            leftColHeight = $LEFT_COL.eq(1).height() + $SIDEBAR_FOOTER.height(),
-            contentHeight = bodyHeight < leftColHeight ? leftColHeight : bodyHeight;
-
-        // normalize content
-        contentHeight -= $NAV_MENU.height() + $FOOTER.height();
-
-        $RIGHT_COL.css('min-height', contentHeight);
-    };
     
 
 
