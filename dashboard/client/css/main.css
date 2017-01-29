@@ -21,14 +21,16 @@ table.vcentered>tbody>tr>td{
     font-size: 13px;
 }
 
-.nav_title {
-    border: 0;
-    text-align: center;
-}
 .nav_title img {
     width: 100%;
     margin: 20px auto;
     max-width: 50px;
+}
+
+.nav_title {
+    border: 0;
+    text-align: center;
+    padding: 40px 0px 0px 0px;
 }
 
 .noenddate {

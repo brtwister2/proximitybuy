@@ -1,0 +1,210 @@
+body {
+    font-family: 'Roboto', Helvetica, Sans, Arial;
+}
+
+.bg , .frm-container {
+    position: relative;
+    height: 100%;
+    background: url('../images/bg.jpg') no-repeat center;
+    background-size: cover;
+    float: left;
+}
+.bg {
+    width: 60%;
+}
+.bg img {
+    position: absolute;
+    top: 50%;
+    left: 20%;
+    margin-top: -35px;
+
+}
+
+.logo {
+    position: absolute;
+    top: 50%;
+    left: 60%;
+    margin-top: -125px;
+    margin-left: -115px;
+    z-index: 2;
+}
+
+.frm-container {
+    width: 40%;
+    background: #fff;
+}
+
+.loginmodal-container {
+    padding: 29px;
+    max-width: 350px;
+    width: 100% !important;
+    margin: 0 auto;
+    margin-top: -170px;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -125px;
+    border-radius: 2px;
+    overflow: hidden;
+}
+
+.loginmodal-container h1 {
+    text-align: center;
+    font-size: 1.8em;
+    font-weight: 300;
+    color: #3595ce;
+}
+
+.loginmodal-container input[type=submit] {
+    width: 100%;
+    display: block;
+    margin-bottom: 10px;
+    position: relative;
+}
+
+.loginmodal-container input[type=text], input[type=password] {
+    height: 44px;
+    font-size: 16px;
+    width: 100%;
+    margin-bottom: 10px;
+    -webkit-appearance: none;
+    background: #fff;
+    border: 1px solid #d9d9d9;
+    border-top: 1px solid #c0c0c0;
+    /* border-radius: 2px; */
+    padding: 0 8px;
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+}
+
+.loginmodal-container input[type=text]:hover, input[type=password]:hover {
+    border: 1px solid #b9b9b9;
+    border-top: 1px solid #a0a0a0;
+    -moz-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    -webkit-box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+    box-shadow: inset 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.loginmodal {
+    text-align: center;
+    font-size: 14px;
+    font-family: 'Arial', sans-serif;
+    font-weight: 700;
+    height: 36px;
+    padding: 0 8px;
+    /* border-radius: 3px; */
+    /* -webkit-user-select: none;
+      user-select: none; */
+}
+
+.loginmodal-submit {
+    /* border: 1px solid #3079ed; */
+    border: 0px;
+    color: #fff;
+
+    background: #47e4e5; /* Old browsers */
+    background: -moz-linear-gradient(left, #47e4e5 0%, #3595ce 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #47e4e5 0%,#3595ce 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #47e4e5 0%,#3595ce 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47e4e5', endColorstr='#3595ce',GradientType=1 ); /* IE6-9 */
+    text-shadow: none;
+    border-radius: 5px;
+    padding: 17px 0px;
+    font-family: roboto;
+    font-size: 14px;
+}
+
+.loginmodal-submit:hover {
+    /* border: 1px solid #2f5bb7; */
+    border: 0px;
+    text-shadow: 0 1px rgba(0,0,0,0.3);
+    background-color: #357ae8;
+    /* background-image: -webkit-gradient(linear, 0 0, 0 100%,   from(#4d90fe), to(#357ae8)); */
+}
+
+.loginmodal-container a {
+    text-decoration: none;
+    color: #666;
+    font-weight: 400;
+    text-align: center;
+    display: inline-block;
+    opacity: 0.6;
+    transition: opacity ease 0.5s;
+}
+
+
+@media (max-width: 1250px) {
+    .logo{
+        margin-top: -86px;
+        margin-left: -79px;
+        width: 160px;
+    }
+    .bg img {
+        left: 26%;
+        width: 360px;
+    }
+}
+
+@media (max-width: 1130px) {
+    .logo{
+        margin-top: -248px;
+        margin-left: 128px;
+    }
+
+    .loginmodal-container {
+        margin-top: -114px;
+        left: 50%;
+        top: 58%;
+        margin-left: -177px;
+    }
+}
+
+@media (max-width: 1040px) {
+    .bg {
+        display: none;
+    }
+
+    .frm-container {
+        width: 100%;
+    }
+
+    .logo {
+        top: 50%;
+        left: 50%;
+        margin-left: -80px;
+        margin-top: -310px;
+    }
+
+    .loginmodal-container {
+        padding: 0px;
+        margin-top: -200px;
+        left: 50%;
+        top: 58%;
+        margin-left: -176px;
+    }
+}
+
+@media (max-width: 414px) {
+    .logo {
+        margin-left: -60px;
+        margin-top: -283px;
+        width: 120px;
+    }
+
+    .loginmodal-container {
+        padding: 19px;
+    }
+}
+
+
+@media (max-width: 320px) {
+    .logo {
+        margin-top: -226px;
+    }
+
+    .loginmodal-container {
+        padding: 10px;
+        margin-top: -144px;
+        margin-left: -160px;
+    }
+}
