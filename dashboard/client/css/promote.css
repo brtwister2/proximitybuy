@@ -79,16 +79,15 @@
 }
 #promote-view .picture-upload .btn-danger{
     width: 100%;
-    margin: 5px;
 }
 #promote-view .picture-upload .img-upload {
     width: 100%;
     border-radius: 8px;
-    margin-left: 5px;
+    margin-bottom: 6px;
     display: block;
-    height: 167px;;
+    height: 300px;
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: contain;
     background-position: center center;
 }
 #promote-view .picture-upload .img-upload:hover .img-edit-upload {
@@ -99,8 +98,8 @@
 }
 #promote-view .picture-upload .img-upload .img-edit-upload {
     width: 100%;
-    height: 167px;
-    line-height: 160px;
+    height: 100%;
+    line-height: 318px;
     font-size: 15pt;
     border-radius: 8px;
     background: rgba(0,0,0,0.5);
@@ -114,7 +113,7 @@
 
 
 @media (max-width: 768px) {
-    #promote-view .panel_header span {
+    #promote-view .panel_header .title {
         font-size: 15pt;
     }
     #promote-view .panel_header button span{

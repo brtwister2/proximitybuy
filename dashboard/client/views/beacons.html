@@ -74,17 +74,17 @@
         <thead>
         <tr>
             <th>Bid</th>
-            <th>Description</th>
-            <th>Latitude</th>
-            <th>Longitude</th>
+            <th class="hidden-xs">Description</th>
+            <th class="hidden-xs">Latitude</th>
+            <th class="hidden-xs">Longitude</th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="beacon in ctrl.beacons" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
             <td><span ng-click="ctrl.editBeacon(beacon);" class="link">{{beacon.bid}}</span></td>
-            <td>{{beacon.description}}</td>
-            <td>{{beacon.lat}}</td>
-            <td>{{beacon.lng}}</td>
+            <td class="hidden-xs">{{beacon.description}}</td>
+            <td class="hidden-xs">{{beacon.lat}}</td>
+            <td class="hidden-xs">{{beacon.lng}}</td>
         </tr>
         </tbody>
     </table>

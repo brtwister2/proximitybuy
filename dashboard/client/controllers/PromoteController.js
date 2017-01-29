@@ -15,12 +15,17 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
 
     self.removeCampaignImage = function(campaign){
         campaign.img = null;
-    }
+    };
+
+    self.ViewCampaignImage = function(campaign){
+        window.open(campaign.img,'target=_blank');
+    };
+
     self.getCurrentImage = function(campaign){
         var i = (campaign.img != null && campaign.img != '')
             ? campaign.img : 'images/no_image.png';
         return i;
-    }
+    };
 
     $scope.setCampaignImage = function(img){
         if (img && img[0]) {
@@ -34,7 +39,7 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
             reader.readAsDataURL(img[0]);
         }
 
-    }
+    };
 
     self.isNoEndDate = function(campaign){
       return (!campaign.enddate || campaign.enddate == null || campaign.enddate == "0000-00-00 00:00:00");
@@ -87,8 +92,10 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
 
     self.saveCurrentCampaign = function(campaign){
 
+        if(!isValid(campaign.beaconid)) {  alert('Please select a valid beacon'); return; }
+
         if(isValid(campaign.name)  && isValid(campaign.description) &&
-            isValid(campaign.status) && isValid(campaign.beaconid) ) {
+            isValid(campaign.status) ) {
             if(!campaign.id) {
                 if(campaign.img != null && campaign.img != '') {
                     campaign.img = campaign.img.substr(campaign.img.indexOf('base64,') + 7, campaign.img.length - 1);

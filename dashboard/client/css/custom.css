@@ -48,7 +48,7 @@
 }
 .nav-sm .nav.child_menu li.active,
 .nav-sm .nav.side-menu li.active-sm {
-  border-right: 5px solid #1ABB9C;
+  border-right: 5px solid #3595ce;
 }
 .nav-sm ul.nav.child_menu ul,
 .nav-sm .nav.side-menu li.active-sm ul ul {
@@ -57,7 +57,7 @@
     background: none;
 }
 .nav-sm > .nav.side-menu > li.active-sm > a {
-  color: #1ABB9C !important;
+  color: #3595ce !important;
 }
 .nav-sm .nav.side-menu li a i.toggle-up {
   display: none !important;
@@ -164,7 +164,7 @@
 .nav-sm .menu_section {
   margin: 0;
 }
-.nav-sm span.fa, 
+.nav-sm span.fa,
 .nav-sm .menu_section h3 {
   display: none;
 }
@@ -173,7 +173,7 @@
 }
 .nav_menu {
   float: left;
-  background: #EDEDED;
+  background: #ffffff;
   border-bottom: 1px solid #D9DEE4;
   margin-bottom: 10px;
   width: 100%;
@@ -254,7 +254,7 @@ body .container.body .right_col {
   color: #9B59B6;
 }
 .green {
-  color: #1ABB9C;
+  color: #3595ce;
 }
 .aero {
   color: #9CC2CB;
@@ -272,7 +272,7 @@ body .container.body .right_col {
   border-color: #9B59B6 !important;
 }
 .border-green {
-  border-color: #1ABB9C !important;
+  border-color: #3595ce !important;
 }
 .border-aero {
   border-color: #9CC2CB !important;
@@ -289,8 +289,8 @@ body .container.body .right_col {
   color: #73879C;
 }
 .bg-green {
-  background: #1ABB9C !important;
-  border: 1px solid #1ABB9C !important;
+  background: #3595ce !important;
+  border: 1px solid #3595ce !important;
   color: #fff;
 }
 .bg-red {
@@ -545,11 +545,11 @@ a:hover, a:focus {
   color: #E7E7E7;
   font-weight: 500;
 }
-.nav.child_menu li li:hover, 
+.nav.child_menu li li:hover,
 .nav.child_menu li li.active {
   background: none;
 }
-.nav.child_menu li li a:hover, 
+.nav.child_menu li li a:hover,
 .nav.child_menu li li a.active {
   color: #fff;
 }
@@ -559,7 +559,7 @@ a:hover, a:focus {
   padding: 13px 15px 12px;
 }
 .nav.side-menu> li.current-page, .nav.side-menu> li.active {
-  border-right: 5px solid #1ABB9C;
+  border-right: 5px solid #3595ce;
 }
 .nav li.current-page {
   background: rgba(255, 255, 255, 0.05);
@@ -689,7 +689,7 @@ footer {
   display: block;
 }
 .nav-sm footer {
-  margin-left: 70px ;  
+  margin-left: 70px ;
 }
 .tile-stats.sparkline {
   padding: 10px;
@@ -1148,7 +1148,7 @@ table.jambo_table tbody tr.selected td {
 }
 table.dataTable th.focus,
 table.dataTable td.focus {
-    outline: 2px solid #1ABB9C !important;
+    outline: 2px solid #3595ce !important;
     outline-offset: -1px;
 }
 
@@ -1361,7 +1361,7 @@ ul.msg_list li a .message {
   border: 1px solid #D9DEE4;
   border-top-left-radius: 0;
   border-top-right-radius: 0;
-  
+
 }
 .dropdown-menu>li>a {
   color: #5A738E;
@@ -1547,9 +1547,9 @@ span.right {
   }
 }
 .tile_count .tile_stats_count:before {
-  content:""; 
-  position: absolute; 
-  left: 0; 
+  content:"";
+  position: absolute;
+  left: 0;
   height: 65px;
   border-left: 2px solid #ADB2B5;
   margin-top: 10px;
@@ -1993,7 +1993,7 @@ a.star {
   display: inline-block;
 }
 
-.compose {  
+.compose {
   padding: 0;
   position: fixed;
   bottom: 0;
@@ -2391,7 +2391,7 @@ textarea:focus {
 }
 .bs-glyphicons li:hover {
   color: #fff;
-  background-color: #1ABB9C
+  background-color: #3595ce
 }
 @media (min-width: 768px) {
   .bs-glyphicons {
@@ -2423,7 +2423,7 @@ span.tag {
   float: left;
   padding: 5px 9px;
   text-decoration: none;
-  background: #1ABB9C;
+  background: #3595ce;
   color: #F1F6F7;
   margin-right: 5px;
   font-weight: 500;
@@ -2559,7 +2559,7 @@ ul.timeline li {
 }
 .tag {
   line-height: 1;
-  background: #1ABB9C;
+  background: #3595ce;
   color: #fff !important;
 }
 .tag:after {
@@ -2573,7 +2573,7 @@ ul.timeline li {
   pointer-events: none;
   border-top: 14px solid transparent;
   border-bottom: 14px solid transparent;
-  border-left: 11px solid #1ABB9C;
+  border-left: 11px solid #3595ce;
 }
 .timeline h2.title {
   position: relative;
@@ -2644,7 +2644,7 @@ ul.social li {
   border-radius: 50%;
 }
 .chat .status.online {
-  background: #1ABB9C;
+  background: #3595ce;
 }
 .chat .status.away {
   background: #F39C12;
@@ -2779,7 +2779,7 @@ ul.widget_profile_box li a {
   padding: 0px;
 }
 ul.widget_profile_box li a:hover {
-  color: #1ABB9C !important;
+  color: #3595ce !important;
   border: 1px solid rgba(38, 185, 154, 1);
 }
 ul.widget_profile_box li .profile_img {
@@ -2971,7 +2971,7 @@ ul.project_files li a i {
   background: #fff;
 }
 .pricing .title {
-  background: #1ABB9C;
+  background: #3595ce;
   height: 110px;
   color: #fff;
   padding: 15px 0 0;
@@ -3818,11 +3818,11 @@ header {
 .editor-wrapper {
   min-height: 250px;
   background-color: white;
-  border-collapse: separate; 
-  border: 1px solid rgb(204, 204, 204); 
-  padding: 4px; 
-  box-sizing: content-box; 
-  -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset; 
+  border-collapse: separate;
+  border: 1px solid rgb(204, 204, 204);
+  padding: 4px;
+  box-sizing: content-box;
+  -webkit-box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
   box-shadow: rgba(0, 0, 0, 0.0745098) 0px 1px 1px 0px inset;
   border-top-right-radius: 3px; border-bottom-right-radius: 3px;
   border-bottom-left-radius: 3px; border-top-left-radius: 3px;
@@ -4142,7 +4142,7 @@ fieldset {
 }
 
 .wizard_horizontal ul.wizard_steps li a.done:before, .wizard_horizontal ul.wizard_steps li a.done .step_no {
-  background: #1ABB9C;
+  background: #3595ce;
   color: #fff;
 }
 
@@ -4254,7 +4254,7 @@ fieldset {
 }
 
 .wizard_verticle ul.wizard_steps li a.done:before, .wizard_verticle ul.wizard_steps li a.done .step_no {
-  background: #1ABB9C;
+  background: #3595ce;
   color: #fff;
 }
 
@@ -4469,7 +4469,7 @@ ul.notifications {
 }
 
 .daterangepicker.picker_1 table.table-condensed thead tr:first-child {
-  background: #1ABB9C;
+  background: #3595ce;
 }
 
 .daterangepicker table.table-condensed thead tr:first-child th {
@@ -4511,11 +4511,11 @@ ul.notifications {
 }
 
 .daterangepicker.picker_2 table.table-condensed thead tr {
-  color: #1ABB9C;
+  color: #3595ce;
 }
 
 .daterangepicker.picker_3 table.table-condensed thead tr:first-child {
-  background: #1ABB9C;
+  background: #3595ce;
   color: #ECF0F1;
 }
 
@@ -4791,6 +4791,6 @@ html, body, .container, .main_container{
 }
 .right_col{
   height: auto!important;
-  min-height: 100%;!important;
+  min-height: 100%!important;
 }
 

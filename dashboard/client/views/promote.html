@@ -26,8 +26,11 @@
                                        onchange="angular.element(this).scope().setCampaignImage(this.files);"
                                        accept="image/*" ng-model="ctrl.currentImage"/>
                             </div>
-                            <button class="btn btn-danger btn-block"
+                            <button ng-if="ctrl.currentCampaign.img" class="btn btn-danger btn-block"
                                     ng-click="ctrl.removeCampaignImage(ctrl.currentCampaign);">Clear
+                            </button>
+                            <button ng-if="ctrl.currentCampaign.img" class="btn btn-success btn-block"
+                                    ng-click="ctrl.ViewCampaignImage(ctrl.currentCampaign);">View
                             </button>
                         </div>
 
@@ -39,7 +42,6 @@
 
                                         <input type="radio" name="switch" ng-model="ctrl.currentCampaign.status"
                                                value="1" required> &nbsp; On &nbsp;
-
 
                                         <input type="radio" id="switchOff" name="switch"
                                                ng-model="ctrl.currentCampaign.status" value="0" required> &nbsp; Off
@@ -71,7 +73,8 @@
                                         class="required">*</span>
                                 </label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <select class="form-control" ng-model="ctrl.currentCampaign.beaconid" ng-options="item.id as item.description for item in ctrl.beacons">
+                                    <select class="form-control" ng-model="ctrl.currentCampaign.beaconid"
+                                            ng-options="item.id as item.description for item in ctrl.beacons" required>
                                     </select>
                                 </div>
                             </div>
@@ -102,30 +105,32 @@
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3  col-xs-12 ">Distance(m)</label>
                                 <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input class="form-control" ng-model="ctrl.currentCampaign.distance"
-                                           placeholder="in meters" type="text" maxlength="3"/>
+                                    <input class="form-control"  ng-model="ctrl.currentCampaign.distance"
+                                           placeholder="in meters" type="text" maxlength="3" required/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3  col-xs-12">Schedule </label>
                                 <div class="col-md-2 col-sm-2 col-xs-4">
-                                    <input type="text"
+                                    <input type="text" =
                                            ng-model="ctrl.currentCampaign.startdate" placeholder="yyyy-mm-dd"
-                                           ui-date-mask class="form-control budget-field"/>
+                                           ui-date-mask class="form-control budget-field" required/>
                                 </div>
                                 <div class="col-md-2 col-sm-2 col-xs-4">
                                     <input type="text" ng-disabled="ctrl.currentCampaign.nodate"
                                            ng-model="ctrl.currentCampaign.enddate" placeholder="yyyy-mm-dd"
                                            ui-date-mask class="form-control budget-field"/>
                                 </div>
-                                <div ng-if="ctrl.isNoEndDate(ctrl.currentCampaign)" class="col-md-2 col-sm-2 col-xs-4">No end date</div>
+                                <div ng-if="ctrl.isNoEndDate(ctrl.currentCampaign)" class="col-md-2 col-sm-2 col-xs-4">
+                                    No end date
+                                </div>
                             </div>
                         </div>
                     </div>
                     <hr/>
                     <div class="form-group">
                         <div class="pull-right">
-                            <button type="submit" ng-click="ctrl.cancelEditCampaign();" class="btn ">Cancel</button>
+                            <button type="button" ng-click="ctrl.cancelEditCampaign();" class="btn ">Cancel</button>
                             <button type="submit" class="btn btn-success"
                                     ng-click="ctrl.saveCurrentCampaign(ctrl.currentCampaign);">Save
                             </button>

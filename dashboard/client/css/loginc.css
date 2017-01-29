@@ -102,14 +102,14 @@ body {
     border: 0px;
     color: #fff;
 
-    background: #47e4e5; /* Old browsers */
-    background: -moz-linear-gradient(left, #47e4e5 0%, #3595ce 100%); /* FF3.6-15 */
-    background: -webkit-linear-gradient(left, #47e4e5 0%,#3595ce 100%); /* Chrome10-25,Safari5.1-6 */
-    background: linear-gradient(to right, #47e4e5 0%,#3595ce 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
-    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47e4e5', endColorstr='#3595ce',GradientType=1 ); /* IE6-9 */
+    background: #47c8e5; /* Old browsers */
+    background: -moz-linear-gradient(left, #47c8e5 0%, #3595ce 100%); /* FF3.6-15 */
+    background: -webkit-linear-gradient(left, #47c8e5 0%,#3595ce 100%); /* Chrome10-25,Safari5.1-6 */
+    background: linear-gradient(to right, #47c8e5 0%,#3595ce 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#47c8e5', endColorstr='#3595ce',GradientType=1 ); /* IE6-9 */
     text-shadow: none;
     border-radius: 5px;
-    padding: 17px 0px;
+    padding: 8px 0px;
     font-family: roboto;
     font-size: 14px;
 }
