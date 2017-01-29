@@ -75,6 +75,60 @@ $app->delete('/application/{id}', function (ServerRequestInterface $request, Res
 
     return $response->withHeader('Content-type', $contentType)->write($result);
 });
+//beacon
+
+$app->get('/beacon', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Beacon.php';
+	$service = new Beacon();
+	$objects = $service->getAll();
+	$result = json_encode(array("objects"=>$objects));
+
+    return $response->withHeader('Content-type', $contentType)->write($result);
+}); 
+
+
+$app->get('/beacon/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Beacon.php';
+	$route = $request->getAttribute('route');
+    $id = $route->getArgument('id');
+	$service = new Beacon();
+	$objects = $service->getWithId($id);
+	$result = json_encode(array("objects"=>$objects));
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
+
+$app->put('/beacon/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Beacon.php';
+	$route = $request->getAttribute('route');
+    $id = $route->getArgument('id');
+	$service = new Beacon();
+	$objects = $service->updateWithId($id,$request->getBody());
+	$result = json_encode($objects);
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
+$app->post('/beacon', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Beacon.php';
+	$service = new Beacon();
+	$objects = $service->add($request->getBody());
+	$result = json_encode(array("status"=>$objects));
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
+
+$app->delete('/beacon/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Beacon.php';
+	$route = $request->getAttribute('route');
+    $id = $route->getArgument('id');
+	$service = new Beacon();
+	$objects = $service->delete($id);
+	$result = json_encode(array("status"=>$objects));
+
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
+// fim beacon
 
 //campagin
 
@@ -138,8 +192,8 @@ function connect_db() {
 	$pass = 'root';
 	$database = 'proximitybuy';
 
-	//$user = 'pbuy';
-	//$pass = 'w5aruX8PcG7HY2Tf';
+	$user = 'pbuy';
+	$pass = 'w5aruX8PcG7HY2Tf';
 
     $connection = new mysqli($server, $user, $pass, $database);
 

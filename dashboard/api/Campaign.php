@@ -7,4 +7,10 @@ class Campaign extends BaseModel {
    		$this->entity = "campaign";    
    	}
 
+   	function listBeacons(){
+
+
+   		return parent::getAll();
+   	}
+
 }
