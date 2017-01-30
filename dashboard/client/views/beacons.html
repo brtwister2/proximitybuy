@@ -3,7 +3,7 @@
 
     <div class="panel_header">
         <span class="title">{{ctrl.isEditing ? (ctrl.currentBeacon.id == null ? 'New beacon' : 'Editing beacon #'+ctrl.currentBeacon.id) : 'Setup your beacons'}}</span>
-        <button ng-click="ctrl.newBeacon();" class="btn btn-campaign"><i class="fa fa-plus"></i> <span>Beacon new app</span>
+        <button ng-click="ctrl.newBeacon();" class="btn btn-campaign"><i class="fa fa-plus"></i> <span>New beacon</span>
         </button>
         <button ng-show="ctrl.isEditing && ctrl.currentBeacon.id != null"
                 ng-click="ctrl.removeBeacon(ctrl.currentBeacon, true);" class="btn btn-close"><i

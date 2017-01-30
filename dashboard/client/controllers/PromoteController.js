@@ -96,10 +96,12 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
 
         if(isValid(campaign.name)  && isValid(campaign.description) &&
             isValid(campaign.status) ) {
+
+            if(campaign.img != null && campaign.img != '' && campaign.img.indexOf('base64,') > -1) {
+                campaign.img = campaign.img.substr(campaign.img.indexOf('base64,') + 7, campaign.img.length - 1);
+            }
+
             if(!campaign.id) {
-                if(campaign.img != null && campaign.img != '') {
-                    campaign.img = campaign.img.substr(campaign.img.indexOf('base64,') + 7, campaign.img.length - 1);
-                }
                 $http.post(CAMPAIGN_URL, campaign)
                     .then(function (response) {
                         if(response.data.status) {
