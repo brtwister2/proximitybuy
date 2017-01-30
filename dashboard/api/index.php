@@ -141,6 +141,17 @@ $app->get('/campaign', function (ServerRequestInterface $request, ResponseInterf
     return $response->withHeader('Content-type', $contentType)->write($result);
 });
 
+$app->get('/campaign/{trackid}/{bid}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Campaign.php';
+	$route = $request->getAttribute('route');
+    $trackid = $route->getArgument('trackid');
+    $bid = $route->getArgument('bid');
+	$service = new Campaign();
+	$objects = $service->getCampaignByBeacon($bid);
+	$result = json_encode(array("objects"=>$objects));
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
 $app->get('/campaign/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
 	require 'Campaign.php';
 	$route = $request->getAttribute('route');
@@ -150,7 +161,6 @@ $app->get('/campaign/{id}', function (ServerRequestInterface $request, ResponseI
 	$result = json_encode(array("campaign"=>$campaigns));
     return $response->withHeader('Content-type', $contentType)->write($result);
 });
-
 
 $app->put('/campaign/{id}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
 	require 'Campaign.php';
