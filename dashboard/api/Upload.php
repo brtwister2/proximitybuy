@@ -1,6 +1,6 @@
 <?php
 
-define('LINK',  'http://192.168.0.3/proximitybuy/dashboard/api/imgs/');
+define('LINK',  'http://boomsoft.com.br/proximitybuy/api/imgs/');
 
 class Upload {
 
