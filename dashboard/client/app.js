@@ -4,7 +4,7 @@ if(localStorage.getItem("loggedin") !== 'true'){
 }
 
 var app = angular.module('dashboard', ['ngRoute','ngAnimate', 'ui.utils.masks']).run()
-.config(function ($routeProvider, $locationProvider) {
+.config(function ($routeProvider) {
     $routeProvider
         .when('/home', {
             templateUrl: 'views/home.html',
@@ -39,7 +39,7 @@ app.factory("Service", function () {
         getView: getView,
         setView: setView,
     }
-})
+});
 
 app.directive('formatCurrency', function($filter) {
     return {
