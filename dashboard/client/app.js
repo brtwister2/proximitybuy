@@ -3,7 +3,11 @@ if(localStorage.getItem("loggedin") !== 'true'){
     location.href = 'login.html';
 }
 
-var app = angular.module('dashboard', ['ngRoute','ngAnimate', 'ui.utils.masks']).run()
+var app = angular.module('dashboard', ['ngRoute','ngAnimate', 'ui.utils.masks']).run(function($rootScope, $location){
+    $rootScope.go = function(route){
+        $location.path(route);
+    };
+})
 .config(function ($routeProvider) {
     $routeProvider
         .when('/home', {
