@@ -18,6 +18,15 @@ ini_set('display_errors', 1);
 
 $contentType = 'application/json; charset: utf-8';
 
+//----- DEVICE ------
+$app->post('/device', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Device.php';
+	$service = new Device();
+	$objects = $service->add($request->getBody());
+	$result = json_encode(array("status"=>$objects));
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+//----- FIM DEVICE ------
 
 $app->get('/appcampaign/{trackid}/{bid}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
 	require 'ApplicationCampaign.php';
@@ -26,7 +35,7 @@ $app->get('/appcampaign/{trackid}/{bid}', function (ServerRequestInterface $requ
     $bid = $route->getArgument('bid');
 
 	$service = new ApplicationCampaign();
-	$campaigns = $service->getCampaignForBeaconId($bid);
+	$campaigns = $service->getCampaignForBeaconMinor($bid);
 
 
 	$result = json_encode(array("campanha"=>$campaigns));
@@ -204,6 +213,8 @@ function connect_db() {
 
 	$user = 'pbuy';
 	$pass = 'w5aruX8PcG7HY2Tf';
+
+	$pass = '71x7OeAH43sEczRP';
 
     $connection = new mysqli($server, $user, $pass, $database);
 

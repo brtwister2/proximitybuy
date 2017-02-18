@@ -18,6 +18,18 @@ class ApplicationCampaign extends BaseModel {
 	    return null;
 	}
 
+	function getCampaignForBeaconMinor($minor){
+		$db = connect_db();
+    
+		$sql = "select * from campaign where beaconid = $minor";
+	    $r = $db->query($sql);
+	    if ($r !== false) {
+	       	return $r->fetch_assoc();
+	    }
+
+	    return null;
+	}
+
 
 
 }
