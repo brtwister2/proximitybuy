@@ -33,7 +33,7 @@ $app->get('/appcampaign/{trackid}/{bid}', function (ServerRequestInterface $requ
 
 	$route = $request->getAttribute('route');
     $bid = $route->getArgument('bid');
-
+    
 	$service = new ApplicationCampaign();
 	$campaigns = $service->getCampaignForBeaconMinor($bid);
 
@@ -207,14 +207,17 @@ $app->run();
 function connect_db() {
 
     $server = 'localhost';
-	$user = 'root';
-	$pass = 'root';
 	$database = 'proximitybuy';
 
-	$user = 'pbuy';
-	$pass = 'w5aruX8PcG7HY2Tf';
+	if ($_SERVER['SERVER_NAME'] == 'localhost') {
+		$user = 'root';
+		$pass = 'root';
+	}else{
+		$user = 'pbuy';
+		$pass = 'w5aruX8PcG7HY2Tf';
 
-	$pass = '71x7OeAH43sEczRP';
+		$pass = '71x7OeAH43sEczRP';
+	}
 
     $connection = new mysqli($server, $user, $pass, $database);
 
