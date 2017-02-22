@@ -102,22 +102,16 @@
                                            required/>
                                 </div>
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-md-3 col-sm-3  col-xs-12 ">Distance(m)</label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input class="form-control"  ng-model="ctrl.currentCampaign.distance"
-                                           placeholder="in meters" type="text" maxlength="3" required/>
-                                </div>
-                            </div>
+
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3  col-xs-12">Schedule </label>
                                 <div class="col-md-2 col-sm-2 col-xs-4">
-                                    <input type="text" =
+                                    <input type="text"
                                            ng-model="ctrl.currentCampaign.startdate" placeholder="yyyy-mm-dd"
                                            ui-date-mask class="form-control budget-field" required/>
                                 </div>
                                 <div class="col-md-2 col-sm-2 col-xs-4">
-                                    <input type="text" ng-disabled="ctrl.currentCampaign.nodate"
+                                    <input type="text"
                                            ng-model="ctrl.currentCampaign.enddate" placeholder="yyyy-mm-dd"
                                            ui-date-mask class="form-control budget-field"/>
                                 </div>
@@ -145,11 +139,11 @@
     <table class="table table-striped vcentered">
         <thead>
         <tr>
-            <th class="visible-sm visible-sm visible-lg">Status</th>
+            <th width="100" class="visible-sm visible-sm visible-lg">Status</th>
             <th>Campaign name</th>
             <th class="visible-lg">beacon id</th>
             <th class="visible-sm visible-md visible-lg">budget</th>
-            <th>Views</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
@@ -160,12 +154,10 @@
                     {{campaign.status == "1" ? 'Actived' : 'Deactived' }}
                 </button>
             </td>
-            <td><img ng-src="{{ctrl.getCurrentImage(campaign)}}" alt=""/> <span ng-click="ctrl.editCampaign(campaign);"
-                                                                                class="link">{{campaign.name}}</span>
-            </td>
+            <td><img ng-src="{{ctrl.getCurrentImage(campaign)}}" alt=""/> {{campaign.name}}</td>
             <td class="visible-lg">{{campaign.bid}}</td>
             <td class="visible-sm visible-md visible-lg">{{campaign.budget | currency}}</td>
-            <td><b>{{campaign.views}}</b></td>
+            <td><button ng-click="ctrl.editCampaign(campaign);" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button></td>
         </tr>
         </tbody>
     </table>

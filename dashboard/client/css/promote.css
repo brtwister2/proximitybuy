@@ -7,8 +7,8 @@
 #promote-view table .bid{
     width: 300px;
 }
-#promote-view table td:first-child, #promote-view table th:first-child{
-    text-align: center;
+#promote-view table td:last-child, #promote-view table th:last-child{
+    text-align: right;
 }
 #promote-view table img {
     width: 40px;
@@ -64,10 +64,6 @@
 
 .btn-close:active, .btn-close:hover, .btn-close:focus  {
     color: #fff;
-}
-
-#promote-view table td:last-child, #promote-view table th:last-child{
-    text-align: center;
 }
 
 #promote-view .form-panel{

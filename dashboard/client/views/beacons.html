@@ -18,6 +18,17 @@
 
                     <div class="row">
                         <div class=" col-md-12 col-sm-12 col-xs-12 col-lg-12 promote-frm">
+
+                            <div class="form-group">
+                                <label class="control-label col-sm-3">Description<span
+                                        class="required">*</span>
+                                </label>
+                                <div class="col-md-9 col-sm-9 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.description"
+                                           placeholder="Type a description here" class="form-control" required/>
+                                </div>
+                            </div>
+
                             <div class="form-group">
                                 <label class="control-label  col-sm-3">BID <span
                                         class="required">*</span>
@@ -35,31 +46,22 @@
                                            placeholder="" class="form-control"/>
                                 </div>
                             </div>
+
                             <div class="form-group">
-                                <label class="control-label col-sm-3">Description<span
-                                        class="required">*</span>
-                                </label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" ng-model="ctrl.currentBeacon.description"
-                                           placeholder="Type a description here" class="form-control" required/>
+
+                                <label class="control-label  col-sm-3">Major/Minor </label>
+
+                                <div class="col-md-1 col-sm-2 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.major"
+                                           placeholder="Major" class="form-control"/>
                                 </div>
-                            </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Latitude
-                                </label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" ng-model="ctrl.currentBeacon.lat"
-                                           placeholder="-90.3289" class="form-control"/>
+                                <div class="col-md-1 col-sm-2 col-xs-12">
+                                    <input type="text" ng-model="ctrl.currentBeacon.minor"
+                                           placeholder="Minor" class="form-control"/>
                                 </div>
+
                             </div>
-                            <div class="form-group">
-                                <label class="control-label col-sm-3">Longitude
-                                </label>
-                                <div class="col-md-9 col-sm-9 col-xs-12">
-                                    <input type="text" ng-model="ctrl.currentBeacon.lng"
-                                           placeholder="-49.3827" class="form-control"/>
-                                </div>
-                            </div>
+
                         </div>
                     </div>
                     <hr/>
@@ -81,18 +83,18 @@
     <table class="table table-striped vcentered">
         <thead>
         <tr>
-            <th>Bid</th>
-            <th class="hidden-xs">Description</th>
-            <th class="hidden-xs">Latitude</th>
-            <th class="hidden-xs">Longitude</th>
+            <th width="250">Description</th>
+            <th width="350" class="hidden-xs">Bid</th>
+            <th width="150" class="hidden-xs">Major / Minor</th>
+            <th></th>
         </tr>
         </thead>
         <tbody>
         <tr ng-repeat="beacon in ctrl.beacons" ng-animate="{enter: 'animate-enter', leave: 'animate-leave'}">
-            <td><span ng-click="ctrl.editBeacon(beacon);" class="link">{{beacon.bid}}</span></td>
-            <td class="hidden-xs">{{beacon.description}}</td>
-            <td class="hidden-xs">{{beacon.lat}}</td>
-            <td class="hidden-xs">{{beacon.lng}}</td>
+            <td>{{beacon.description}}</td>
+            <td class="hidden-xs">{{beacon.bid}}</td>
+            <td class="hidden-xs">{{beacon.major}} / {{beacon.minor}}</td>
+            <td><button ng-click="ctrl.editBeacon(beacon);" class="btn btn-warning btn-sm"><i class="fa fa-edit"></i></button></td>
         </tr>
         </tbody>
     </table>
