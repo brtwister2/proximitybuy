@@ -3,7 +3,7 @@
  */
 
 
-var HOST = 'http://localhost/vdash'; //'http://138.197.118.32/proximitybuy/dashboard';
+var HOST = /*'http://localhost/vdash';*/ 'http://138.197.118.32/proximitybuy/dashboard';
 var ANALYTICS_URL = HOST + '/api/report';
 var CAMPAIGN_URL = HOST + '/api/campaign';
 var MONETIZE_URL = HOST + '/api/application';
