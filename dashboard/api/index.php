@@ -14,7 +14,7 @@ use Psr\Http\Message\ResponseInterface;
 $app = new \Slim\App;
 
 error_reporting(E_ALL);
-ini_set('display_errors', 1);
+ini_set('display_errors', 0);
 
 $contentType = 'application/json; charset: utf-8';
 
