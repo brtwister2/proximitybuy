@@ -16,9 +16,11 @@ app.controller('HomeController', function ($scope, Service, $http) {
         $http.get(ANALYTICS_URL)
             .then(function (response) {
                 NProgress.done();
-                $scope.analytics = response.data[0];
-                self.loadGraph();
-                self.loadMapGraph();
+                if(response && response.data && response.data[0].dataset != null) {
+                    $scope.analytics = response.data[0];
+                    self.loadGraph();
+                    self.loadMapGraph();
+                }
             })
             .catch(function () {
                 NProgress.done();
