@@ -37,14 +37,14 @@ class Report extends BaseModel {
 	       	}
 	    }
 
-		@asort($top_campaigns_arr);
-		@asort($top_countries_arr);
+		if($top_campaigns_arr != null) asort($top_campaigns_arr);
+		if($top_countries_arr != null) asort($top_countries_arr);
 		
 	    return [
-	   @ 	'top_campaigns' => array_slice($top_campaigns_arr, 0, 4),
-	   @ 	'top_countries' => array_slice($top_countries_arr, 0, 4),
-	   @ 	'dataset' => $campaigns_date_arr,
-	   @ 	'top_campaigns_total' => $top_campaigns_total
+	   @ 	'top_campaigns' => $top_campaigns_arr != null ? array_slice($top_campaigns_arr, 0, 4) : [],
+	   @ 	'top_countries' => $top_campaigns_arr != null ? array_slice($top_countries_arr, 0, 4) : [],
+	   @ 	'dataset' => $campaigns_date_arr ? $campaigns_date_arr : [],
+	   @ 	'top_campaigns_total' => $top_campaigns_total ? $top_campaigns_total : null
 	    ];
 
 	}
