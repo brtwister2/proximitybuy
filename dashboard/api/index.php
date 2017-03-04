@@ -251,9 +251,9 @@ function connect_db() {
 	$pass = '';
 	$database = 'proximitybuy';
 
-	//$user = 'pbuy';
+	$user = 'pbuy';
 	//$pass = 'w5aruX8PcG7HY2Tf';
-	//$pass = '71x7OeAH43sEczRP';
+	$pass = '71x7OeAH43sEczRP';
 
     $connection = new mysqli($server, $user, $pass, $database);
 
