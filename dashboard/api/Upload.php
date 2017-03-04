@@ -1,6 +1,6 @@
 <?php
 
-define('LINK',  'http://boomsoft.com.br/proximitybuy/api/imgs/');
+define('LINK',  'http://138.197.118.32/proximitybuy/dashboard/api/imgs/');
 
 class Upload {
 
@@ -79,7 +79,7 @@ class Upload {
 
         return false;
     }
-
+/*
     public function upload($data = null) {
 
         if (empty($this->data) || !$this->validates()) {
@@ -88,7 +88,8 @@ class Upload {
 
         $targetDir = new Folder();
 
-        $targetDir->create(UPLOADS_AVATAR . AppAuth::user('id') . '_' . Security::hash(AppAuth::user('id')) . DS);
+        $targetDir->create(
+            S_AVATAR . AppAuth::user('id') . '_' . Security::hash(AppAuth::user('id')) . DS);
 
         if (!move_uploaded_file($this->data['Upload']['upload']['tmp_name'], UPLOADS_AVATAR . AppAuth::user('id') . '_' . Security::hash(AppAuth::user('id')) . DS . $this->data['Upload']['upload']['name'])) {
             return false;
@@ -96,7 +97,7 @@ class Upload {
 
         return true;
     }
-
+*/
     public function delete($fileName = null, $cascade = true)
     {
         if ($fileName == null || trim($fileName) === '')

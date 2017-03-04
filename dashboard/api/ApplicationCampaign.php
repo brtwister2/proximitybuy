@@ -23,6 +23,7 @@ class ApplicationCampaign extends BaseModel {
     
 		$sql = "select * from campaign where beaconid IN (select id from beacon where minor = $minor)";
 	    $r = $db->query($sql);
+	    //die($sql);
 	    if ($r !== false) {
 	       	return $r->fetch_assoc();
 	    }
