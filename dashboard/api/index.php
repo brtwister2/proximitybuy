@@ -28,15 +28,33 @@ $app->post('/device', function (ServerRequestInterface $request, ResponseInterfa
 });
 //----- FIM DEVICE ------
 
-$app->get('/appcampaign/{trackid}/{bid}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+$app->get('/appcampaignbid/{trackid}/{bid}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
 	require 'ApplicationCampaign.php';
+	
 
 	$route = $request->getAttribute('route');
     $bid = $route->getArgument('bid');
+	$service = new ApplicationCampaign();
+	$campaigns = $service->getCampaignForBeaconId($bid);
+	$result = json_encode(array("campanha"=>$campaigns));
+
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
+$app->get('/appcampaign/{trackid}/{minor}', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'ApplicationCampaign.php';
+	require 'Report.php';
+
+	$route = $request->getAttribute('route');
+    $minor = $route->getArgument('minor');
 
 	$service = new ApplicationCampaign();
-	$campaigns = $service->getCampaignForBeaconMinor($bid);
+	$campaigns = $service->getCampaignForBeaconMinor($minor);
 
+	if($campaigns != null){
+		$report = new Report();	
+		$report->reportImpressionByCampaign($campaigns['id']);
+	}	
 
 	$result = json_encode(array("campanha"=>$campaigns));
 
@@ -176,9 +194,24 @@ $app->put('/campaign/{id}', function (ServerRequestInterface $request, ResponseI
 	$route = $request->getAttribute('route');
     $campaignId = $route->getArgument('id');
 	$service = new Campaign();
-	$campaigns = $service->updateWithId($campaignId,$request->getBody());
+	$postdata = $request->getParams();
+	
+	if(isset($postdata['startdate']) && strtotime($postdata['startdate'])){
+		$date = new DateTime($postdata['startdate']);
+		$postdata['startdate'] = $date->format('Y-m-d H:i:s');
+	}
+
+	if(isset($postdata['enddate']) && strtotime($postdata['enddate'])){
+		$date = new DateTime($postdata['enddate']);
+		$postdata['enddate'] = $date->format('Y-m-d H:i:s');
+	}else{
+		unset($postdata['enddate']);
+	}
+
+	$campaigns = $service->updateWithId($campaignId, json_encode($postdata));
 	$result = json_encode($campaigns);
     return $response->withHeader('Content-type', $contentType)->write($result);
+
 });
 
 $app->post('/campaign', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
@@ -201,6 +234,13 @@ $app->delete('/campaign/{id}', function (ServerRequestInterface $request, Respon
     return $response->withHeader('Content-type', $contentType)->write($result);
 });
 
+$app->get('/report', function (ServerRequestInterface $request, ResponseInterface $response) use ($contentType) {
+	require 'Report.php';
+	$report = new Report();
+	$result = json_encode(array($report->getBasicDetails()));
+    return $response->withHeader('Content-type', $contentType)->write($result);
+});
+
 
 $app->run();
 
@@ -208,13 +248,12 @@ function connect_db() {
 
     $server = 'localhost';
 	$user = 'root';
-	$pass = 'root';
+	$pass = '';
 	$database = 'proximitybuy';
 
-	$user = 'pbuy';
-	$pass = 'w5aruX8PcG7HY2Tf';
-
-	$pass = '71x7OeAH43sEczRP';
+	//$user = 'pbuy';
+	//$pass = 'w5aruX8PcG7HY2Tf';
+	//$pass = '71x7OeAH43sEczRP';
 
     $connection = new mysqli($server, $user, $pass, $database);
 

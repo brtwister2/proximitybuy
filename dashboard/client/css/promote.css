@@ -106,6 +106,9 @@
     transition: opacity 200ms 0ms;
 }
 
+.noenddate{
+    float: right;
+}
 
 
 @media (max-width: 768px) {

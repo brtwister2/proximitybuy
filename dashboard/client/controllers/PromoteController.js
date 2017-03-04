@@ -47,6 +47,20 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
 
     self.editCampaign = function(campaign){
 
+        if(campaign.startdate && typeof campaign.startdate == 'string' && campaign.startdate != "0000-00-00 00:00:00"){
+            campaign.startdate = Date.parse(campaign.startdate);
+        }
+
+
+        self.noenddate = campaign.enddate == null;
+        if(campaign.enddate && typeof campaign.enddate == 'string'){
+            self.noenddate = false
+            campaign.enddate = Date.parse(campaign.enddate);
+        }
+
+
+
+
         self.isEditing = true;
         self.currentCampaign = campaign;
     };
@@ -88,7 +102,7 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
                 });
         }
 
-    }
+    };
 
     self.saveCurrentCampaign = function(campaign){
 
@@ -133,6 +147,7 @@ app.controller('PromoteController', function ($scope, $timeout, $http, Service) 
                         }
                     });
             }
+
         }
     };
 

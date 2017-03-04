@@ -102,21 +102,17 @@
                                            required/>
                                 </div>
                             </div>
-
                             <div class="form-group">
                                 <label class="control-label col-md-3 col-sm-3  col-xs-12">Schedule </label>
-                                <div class="col-md-2 col-sm-2 col-xs-4">
-                                    <input type="text"
-                                           ng-model="ctrl.currentCampaign.startdate" placeholder="yyyy-mm-dd"
-                                           ui-date-mask class="form-control budget-field" required/>
+                                <div class="col-sm-4">
+                                    <input type="date"
+                                           ng-model="ctrl.currentCampaign.startdate" class="form-control" required/>
                                 </div>
-                                <div class="col-md-2 col-sm-2 col-xs-4">
-                                    <input type="text"
-                                           ng-model="ctrl.currentCampaign.enddate" placeholder="yyyy-mm-dd"
-                                           ui-date-mask class="form-control budget-field"/>
-                                </div>
-                                <div ng-if="ctrl.isNoEndDate(ctrl.currentCampaign)" class="col-md-2 col-sm-2 col-xs-4">
-                                    No end date
+                                <div class="col-sm-4">
+                                    <input type="date"
+                                           ng-model="ctrl.currentCampaign.enddate" ng-disabled="ctrl.noenddate" class="form-control"/>
+
+                                    <label class="noenddate">No end date <input type="checkbox" ng-model="ctrl.noenddate" /></label>
                                 </div>
                             </div>
                         </div>
